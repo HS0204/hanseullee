@@ -6,470 +6,21 @@
   <title>Hanseul Lee — Android Engineer</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f0f0ec;
-      --bg-card: #e8e8e3;
-      --text: #1a1a1a;
-      --text-sub: #5a5a5a;
-      --accent: #2a7d45;
-      --accent-light: #e6f2eb;
-      --border: #d4d4cf;
-      --font-kr: 'Pretendard', sans-serif;
-      --font-en: Arial, sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-en);
-      font-size: 15px;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body.lang-kr {
-      font-family: var(--font-kr);
-    }
-
-    /* ── Header ── */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-top {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 20px 24px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .header-identity h1 {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text);
-    }
-
-    .header-identity p {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-top: 2px;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-
-    .contact-links {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .contact-links a {
-      font-size: 13px;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-
-    .contact-links a:hover {
-      border-bottom-color: var(--accent);
-    }
-
-    .contact-links .sep {
-      color: var(--border);
-      font-size: 11px;
-    }
-
-    .lang-toggle {
-      display: flex;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .lang-toggle button {
-      background: none;
-      border: none;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--text-sub);
-      font-family: var(--font-en);
-    }
-
-    .lang-toggle button.active {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    /* ── Tabs ── */
-    .tab-bar {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      gap: 0;
-      margin-top: 14px;
-    }
-
-    .tab-bar button {
-      background: none;
-      border: none;
-      padding: 8px 18px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-sub);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      font-family: inherit;
-    }
-
-    .tab-bar button.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-      font-weight: 600;
-    }
-
-    .tab-bar button:hover:not(.active) {
-      color: var(--text);
-    }
-
-    /* ── Main ── */
-    .main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 24px 24px 80px;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .tab-meta {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 20px;
-    }
-
-    .tab-meta .updated {
-      font-size: 12px;
-      color: var(--text-sub);
-    }
-
-    /* ── CV Tab ── */
-    .cv-download {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: 4px;
-      margin-bottom: 28px;
-    }
-
-    .cv-download:hover {
-      opacity: 0.9;
-    }
-
-    .cv-section {
-      margin-bottom: 32px;
-    }
-
-    .cv-section-title {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--accent);
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cv-item {
-      margin-bottom: 18px;
-    }
-
-    .cv-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .cv-item-header h3 {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .cv-item-header .period {
-      font-size: 13px;
-      color: var(--text-sub);
-      flex-shrink: 0;
-    }
-
-    .cv-item-header .location {
-      font-size: 13px;
-      color: var(--text-sub);
-      width: 100%;
-    }
-
-    .cv-item ul {
-      margin-top: 6px;
-      padding-left: 18px;
-    }
-
-    .cv-item li {
-      font-size: 14px;
-      color: var(--text-sub);
-      margin-bottom: 3px;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .skill-tag {
-      font-size: 12px;
-      padding: 2px 10px;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 3px;
-      font-weight: 500;
-    }
-
-    /* ── Career Detail Tab ── */
-    .career-section-label {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--accent);
-      margin-bottom: 16px;
-      margin-top: 36px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .career-section-label:first-child {
-      margin-top: 0;
-    }
-
-    .career-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 24px;
-      margin-bottom: 20px;
-    }
-
-    .career-card-header {
-      margin-bottom: 16px;
-    }
-
-    .career-card-header h3 {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
-    .career-card-header .role {
-      font-size: 14px;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .career-card-header .domain {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
-
-    .career-field {
-      margin-bottom: 14px;
-    }
-
-    .career-field-label {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-sub);
-      margin-bottom: 4px;
-    }
-
-    .career-field-content {
-      font-size: 14px;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .career-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .career-stack .skill-tag {
-      font-size: 12px;
-    }
-
-    .career-images {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .career-images .img-placeholder {
-      background: var(--bg);
-      border: 1px dashed var(--border);
-      border-radius: 4px;
-      aspect-ratio: 16/10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: var(--text-sub);
-    }
-
-    /* ── Profile Tab ── */
-    .profile-section {
-      margin-bottom: 32px;
-    }
-
-    .profile-section-title {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--accent);
-      margin-bottom: 10px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .profile-content {
-      font-size: 14px;
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    .profile-content p {
-      margin-bottom: 10px;
-    }
-
-    /* ── References ── */
-    .reference-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 20px;
-      margin-bottom: 14px;
-    }
-
-    .reference-quote {
-      font-size: 14px;
-      color: var(--text);
-      font-style: italic;
-      line-height: 1.65;
-      margin-bottom: 10px;
-    }
-
-    .reference-author {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .reference-role {
-      font-size: 12px;
-      color: var(--text-sub);
-    }
-
-    /* ── Visitor Counter (admin only) ── */
-    .visitor-badge {
-      display: none; /* Toggle to flex to show */
-      position: fixed;
-      bottom: 16px;
-      right: 16px;
-      background: var(--text);
-      color: var(--bg);
-      font-size: 11px;
-      padding: 6px 12px;
-      border-radius: 4px;
-      z-index: 200;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .visitor-badge.show {
-      display: flex;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      .header-top {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .header-right {
-        width: 100%;
-        justify-content: space-between;
-      }
-      .cv-item-header {
-        flex-direction: column;
-      }
-      .career-images {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link href="./style.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body class="lang-en">
 
   <!-- ══════════ HEADER ══════════ -->
   <header class="header">
     <div class="header-top">
       <div class="header-identity">
         <h1>Hanseul Lee</h1>
-        <p class="i18n" data-en="Android Engineer" data-kr="안드로이드 엔지니어"></p>
       </div>
       <div class="header-right">
         <div class="contact-links">
-          <a href="mailto:lhanseul0204@gmail.com">Email</a>
+          <a href="mailto:lhanseul0204@gmail.com">lhanseul0204@gmail.com</a>
           <span class="sep">|</span>
-          <a href="https://github.com/" target="_blank">GitHub</a>
-          <span class="sep">|</span>
-          <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/hanseul-lee-7a3389235/" target="_blank">LinkedIn</a>
         </div>
         <div class="lang-toggle">
           <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
@@ -478,9 +29,10 @@
       </div>
     </div>
     <nav class="tab-bar">
-      <button class="tab-btn active" data-tab="cv">CV</button>
-      <button class="tab-btn i18n" data-tab="career" data-en="Career Details" data-kr="경력 기술서"></button>
-      <button class="tab-btn i18n" data-tab="profile" data-en="Profile" data-kr="프로필"></button>
+      <button class="tab-btn active" data-tab="cv" data-en="CV" data-kr="이력서">CV</button>
+      <button class="tab-btn i18n" data-tab="career" data-en="Portfolio" data-kr="포트폴리오"></button>
+      <!-- <button class="tab-btn i18n" data-tab="coverletter" data-en="Cover Letter" data-kr="자기소개서"></button> -->
+      <button class="tab-btn i18n" data-tab="profile" data-en="About Me" data-kr="자기소개"></button>
     </nav>
   </header>
 
@@ -490,42 +42,82 @@
     <!-- ──── CV TAB ──── -->
     <section id="tab-cv" class="tab-content active">
       <div class="tab-meta">
-        <span class="updated i18n" data-en="Updated: 2025-02-07" data-kr="최종 수정: 2025-02-07"></span>
+        <span class="updated i18n" data-en="Updated: 07.02.2026" data-kr="최종 수정: 2026/02/07"></span>
       </div>
-
-      <a href="#" class="cv-download i18n" data-en="↓ Download PDF" data-kr="↓ PDF 다운로드" download></a>
 
       <!-- Summary -->
       <div class="cv-section">
-        <div class="cv-section-title i18n" data-en="Summary" data-kr="요약"></div>
         <p class="i18n" style="font-size:14px; color:var(--text-sub); line-height:1.65;"
-          data-en="Android developer eager to create intuitive and reliable mobile experiences. Experienced in designing and shipping offline-first, data-synchronised Android apps for hardware-integrated systems, including BLE/NFC-based EV-charging solutions."
-          data-kr="직관적이고 안정적인 모바일 경험을 만드는 데 열정을 가진 안드로이드 개발자입니다. BLE/NFC 기반 EV 충전 솔루션 등 하드웨어 통합 시스템을 위한 오프라인 우선 앱 설계 및 배포 경험이 있습니다.">
+          data-en="Android developer eager to create intuitive and reliable mobile experiences. Experienced in designing and shipping offline-first, data-synchronised Android apps for hardware-integrated systems. Skilled in debugging, Jetpack Compose and modern Android architecture, applying technical expertise to build robust tools that empower agents and customers in underserved communities. Currently pursuing an MSc in Software Engineering at Cardiff University (expected 2026) to strengthen expertise in software."
+          data-kr="직관적이고 안정적인 모바일 경험을 만드는 안드로이드 개발자 이한슬입니다. 하드웨어 통합 시스템을 위한 오프라인 우선, 데이터 동기화 Android 앱 설계 및 배포 경험을 보유하고 있습니다. 디버깅, Jetpack Compose 및 최신 Android 아키텍처에 능숙하며, 클라이언트와 사용자의 요구사항에 맞춘 견고한 소프트웨어 개발을 지향합니다. 현재 영국 카디프 대학교에서 소프트웨어 엔지니어링 석사 과정을 이수 중이며(2026년 졸업 예정), 소프트웨어 분야의 전문성을 강화하고 있습니다.">
         </p>
       </div>
 
-      <!-- Technical Skills -->
+      <!-- Skills (Table) -->
       <div class="cv-section">
-        <div class="cv-section-title i18n" data-en="Technical Skills" data-kr="기술 스택"></div>
-        <div class="cv-item">
-          <div class="skill-tags">
-            <span class="skill-tag">Kotlin</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Jetpack Compose</span>
-            <span class="skill-tag">MVVM/MVI</span>
-            <span class="skill-tag">Coroutines</span>
-            <span class="skill-tag">Hilt</span>
-            <span class="skill-tag">Retrofit</span>
-            <span class="skill-tag">BLE/NFC</span>
-            <span class="skill-tag">JUnit</span>
-            <span class="skill-tag">Espresso</span>
-            <span class="skill-tag">Firebase</span>
-            <span class="skill-tag">CI/CD</span>
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">AWS</span>
-          </div>
-        </div>
+        <div class="cv-section-title i18n" data-en="Skills" data-kr="보유 스킬"></div>
+        <table class="skills-table">
+          <tr>
+            <th class="i18n" data-en="Languages" data-kr="프로그래밍 언어"></th>
+            <td>
+              <div class="skill-tags">
+                <span class="skill-tag">Kotlin</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Python</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="i18n" data-en="Android" data-kr="안드로이드"></th>
+            <td>
+              <div class="skill-tags">
+                <span class="skill-tag">XML / Jetpack Compose</span>
+                <span class="skill-tag">Web-View</span>
+                <span class="skill-tag">MVVM / MVP / MVI</span>
+                <span class="skill-tag">Clean Architecture</span>
+                <span class="skill-tag">Mulit-Modules</span>
+                <span class="skill-tag">Coroutines</span>
+                <span class="skill-tag">Hilt</span>
+                <span class="skill-tag">Retrofit</span>
+                <span class="skill-tag">BLE / NFC</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="i18n" data-en="Testing & CI/CD" data-kr="테스트 & CI/CD"></th>
+            <td>
+              <div class="skill-tags">
+                <span class="skill-tag">JUnit</span>
+                <span class="skill-tag">Mockito</span>
+                <span class="skill-tag">Firebase</span>
+                <span class="skill-tag">GitHub Actions</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="i18n" data-en="Backend & Infra" data-kr="백엔드 & 인프라"></th>
+            <td>
+              <div class="skill-tags">
+                <span class="skill-tag">RESTful APIs</span>
+                <span class="skill-tag">Oracle / MySql</span>
+                <span class="skill-tag">DevOps</span>
+                <span class="skill-tag">GitHub / GitLab / SVN</span>
+                <span class="skill-tag">AWS</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="i18n" data-en="Soft Skills" data-kr="소프트 스킬"></th>
+            <td>
+              <div class="skill-tags">
+                <span class="skill-tag">Agile / Scrum</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Proactive</span>
+                <span class="skill-tag">Planning</span>
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
 
       <!-- Work Experience -->
@@ -534,7 +126,7 @@
 
         <div class="cv-item">
           <div class="cv-item-header">
-            <h3 class="i18n" data-en="Software Engineer (Android), Chaevi" data-kr="소프트웨어 엔지니어 (안드로이드), Chaevi"></h3>
+            <h3 class="i18n" data-en="Android Engineer, Chaevi" data-kr="안드로이드 개발자, Chaevi"></h3>
             <span class="period">May 2023 – Jan 2025</span>
             <span class="location">Seoul, KR</span>
           </div>
@@ -553,7 +145,7 @@
 
         <div class="cv-item">
           <div class="cv-item-header">
-            <h3 class="i18n" data-en="Freelance Software Engineer (Web)" data-kr="프리랜서 소프트웨어 엔지니어 (웹)"></h3>
+            <h3 class="i18n" data-en="Web Full Stack Developer (Freelance), Shinhan Bank" data-kr="웹 풀스택 개발자 (프리랜서), 신한은행"></h3>
             <span class="period">May 2022 – Apr 2023</span>
             <span class="location">Seoul, KR</span>
           </div>
@@ -569,7 +161,7 @@
 
         <div class="cv-item">
           <div class="cv-item-header">
-            <h3 class="i18n" data-en="AI Research Engineer (Intern), Goquba Technology" data-kr="AI 리서치 엔지니어 (인턴), 고쿠바 테크놀로지"></h3>
+            <h3 class="i18n" data-en="AI Research Engineer (Intern), Goquba Technology" data-kr="AI 리서치 엔지니어 (인턴), 고큐바 테크놀로지"></h3>
             <span class="period">Oct 2021 – Apr 2022</span>
             <span class="location">Seongnam, KR</span>
           </div>
@@ -587,130 +179,228 @@
       <!-- Education -->
       <div class="cv-section">
         <div class="cv-section-title i18n" data-en="Education" data-kr="학력"></div>
+
         <div class="cv-item">
           <div class="cv-item-header">
-            <h3>MSc Software Engineering, Cardiff University</h3>
-            <span class="period">Sep 2025 – Aug 2026 (Expected)</span>
+            <h3 class="i18n" data-en="MSc Software Engineering, Cardiff University" data-kr="카디프 대학교, 소프트웨어 엔지니어링 석사"></h3>
+            <span class="period">Sep 2025 – Sep 2026 (Expected)</span>
           </div>
+          <div class="cv-item-grade i18n" data-en="1st semester grade: Distinction" data-kr="1학기 성적: Distinction(최우수)"></div>
+          <ul>
+            <li class="i18n"
+              data-en="Modules: Agile Software Development, Web Applications, Programming Principles and Practice"
+              data-kr="수강 과목: Agile Software Development, Web Applications, Programming Principles and Practice"></li>
+            <li class="i18n"
+              data-en="Client project with a local public communication programme"
+              data-kr="지역 공공 커뮤니케이션 프로그램 클라이언트 프로젝트"></li>
+          </ul>
         </div>
+
         <div class="cv-item">
           <div class="cv-item-header">
-            <h3>BSc Software Engineering, Tech University of Korea</h3>
+            <h3 class="i18n" data-en="BSc Software Engineering, Tech University of Korea (Transferred)" data-kr="한국공학대학교, 소프트웨어 엔지니어링 학사 (편입)"></h3>
             <span class="period">Mar 2020 – Feb 2022</span>
           </div>
+          <div class="cv-item-grade i18n" data-en="Final grade: 2:2" data-kr="최종 학점: 3.0/4.5"></div>
+          <ul>
+            <li class="i18n"
+              data-en="Modules: Data Structures, Algorithm, Computer Networks, Operating Systems, Software and Cyber Security"
+              data-kr="수강 과목: 자료구조, 알고리즘, 컴퓨터네트워크, 운영체제, 소프트웨어와 정보보안"></li>
+          </ul>
         </div>
       </div>
 
-      <!-- Visa -->
-      <div class="cv-section">
-        <div class="cv-section-title i18n" data-en="Work Eligibility" data-kr="취업 비자"></div>
+      <!-- References -->
+      <div class="profile-section">
+        <div class="profile-section-title i18n" data-en="References" data-kr="레퍼런스 체크"></div>
         <p class="i18n" style="font-size:14px; color:var(--text-sub);"
-          data-en="Eligible for UK Graduate Visa (2-year post-study work visa)"
-          data-kr="UK Graduate Visa 취득 가능 (졸업 후 2년 취업 비자)">
+          data-en="References available upon request."
+          data-kr="전 직장 상사, 동료, 대학 교수 등 레퍼런스 체크가 필요한 경우 연락처 제공 가능합니다.">
+        </p>
+      </div>
+
+      <!-- Work Eligibility — 영어에서만 표시 -->
+      <div class="cv-section lang-en-only">
+        <div class="cv-section-title">Work Eligibility</div>
+        <p style="font-size:14px; color:var(--text-sub);">
+          Eligible for UK Graduate Visa (2-year post-study work visa)
         </p>
       </div>
     </section>
 
-    <!-- ──── CAREER DETAILS TAB ──── -->
+<!-- ──── PORTFOLIO TAB ──── -->
     <section id="tab-career" class="tab-content">
       <div class="tab-meta">
-        <span class="updated i18n" data-en="Updated: 2025-02-07" data-kr="최종 수정: 2025-02-07"></span>
+        <span class="updated i18n" data-en="Updated: 08.02.2026" data-kr="최종 수정: 2026/02/08"></span>
       </div>
 
-      <!-- ─ Career ─ -->
-      <div class="career-section-label i18n" data-en="Career" data-kr="커리어"></div>
+      <!-- ─ In-field Projects ─ -->
+      <div class="career-section-label i18n" data-en="In-field Projects" data-kr="경력기술서"></div>
 
-      <!-- Chaevi -->
+      <!-- ══════════════════════════════════════ -->
+      <!-- ══ Chaevi ══ -->
+      <!-- ══════════════════════════════════════ -->
       <div class="career-card">
         <div class="career-card-header">
-          <h3 class="i18n" data-en="Chaevi — EV Charging Platform" data-kr="Chaevi — EV 충전 플랫폼"></h3>
-          <div class="role i18n" data-en="Android Developer" data-kr="안드로이드 개발자"></div>
+          <h3 class="i18n" data-en="Chaevi — EV Charging Platform" data-kr="채비(주) — 전기차 충전 솔루션"></h3>
+          <div class="role i18n" data-en="Main Android Developer · May 2023 – Jan 2025" data-kr="메인 안드로이드 개발자 (정규직) · 2023.05 – 2025.01"></div>
           <div class="domain i18n"
-            data-en="EV charging infrastructure · Hardware-integrated mobile app (BLE/NFC)"
-            data-kr="EV 충전 인프라 · 하드웨어 연동 모바일 앱 (BLE/NFC)"></div>
+            data-en="EV charging infrastructure · Map-based hardware-integrated mobile app · Globalisation"
+            data-kr="EV 충전 인프라 · 지도 기반 하드웨어 연동 모바일 앱 · 글로벌라이제이션"></div>
         </div>
 
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Project Description" data-kr="프로젝트 설명"></div>
-          <div class="career-field-content i18n"
-            data-en="Rebuilt the company's main Android app from legacy XML/WebView to Jetpack Compose. Designed offline-first architecture for station availability, integrated BLE/NFC hardware pairing, and built telemetry pipelines with Firebase."
-            data-kr="레거시 XML/WebView 기반의 메인 Android 앱을 Jetpack Compose로 전면 재구축. 충전소 가용성을 위한 오프라인 우선 아키텍처 설계, BLE/NFC 하드웨어 페어링 통합, Firebase 기반 텔레메트리 파이프라인 구축.">
+        <!-- Project 1: WebView 유지보수 -->
+        <div class="project-item">
+          <div class="project-item-title i18n"
+            data-en="WebView App Maintenance & New Features"
+            data-kr="WebView 앱 유지보수 및 신규 기능 개발"></div>
+          <div class="project-item-period">2023.05 – 2025.02</div>
+          <div class="project-item-desc i18n"
+            data-en="Operated and maintained WebView-based Android app. Handled Android 14 and Google Play policy changes, new feature development, and external QA collaboration."
+            data-kr="WebView 기반 안드로이드 앱 운영, 정책 대응 및 신규 기능 개발. Android 14 및 Google Play 정책 변경 대응, 외부 QA 협업."></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key results" data-kr="핵심 성과"></span>
+            <span class="i18n"
+              data-en="Firebase Crashlytics: issue analysis time reduced ~50% · QA communication time reduced ~30% · Build deployment automated: 30min → under 10min (70% reduction) · Deprecated WebView/API cleanup for long-term compatibility"
+              data-kr="Firebase Crashlytics 도입으로 이슈 분석 시간 약 50% 단축 · 외부 QA 커뮤니케이션 시간 약 30% 감소 · 배포 자동화로 테스트 빌드 배포 시간 70% 단축 (30분→10분) · 구형 WebView 및 deprecated API 정리"></span>
           </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Key Challenges" data-kr="주요 이슈"></div>
-          <div class="career-field-content i18n"
-            data-en="— Unstable BLE connections in poor-connectivity environments; resolved with standardised timeout/retry/backoff.
-— Schema changes from rapidly evolving backend; added resilience layer in Retrofit integration.
-— MTTR reduction through Firebase Crashlytics instrumentation and parallel triage workflow."
-            data-kr="— 약한 연결 환경에서의 불안정한 BLE 연결 → 표준 타임아웃/재시도/백오프 도입으로 해결
-— 빠르게 변화하는 백엔드의 스키마 변경 → Retrofit 통합에 내결함성 레이어 추가
-— Firebase Crashlytics 계측 및 병렬 트리아지 워크플로우를 통한 MTTR 단축">
-          </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Tech Stack" data-kr="사용 스택"></div>
           <div class="career-stack">
             <span class="skill-tag">Kotlin</span>
-            <span class="skill-tag">Jetpack Compose</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">MVC</span>
             <span class="skill-tag">MVVM</span>
+            <span class="skill-tag">WebView</span>
+            <span class="skill-tag">XML</span>
+            <span class="skill-tag">Firebase</span>
+          </div>
+        </div>
+
+        <!-- Project 2: BLE 충전기 연동 -->
+        <div class="project-item">
+          <div class="project-item-title i18n"
+            data-en="BLE-based EV Charger Integration R&D"
+            data-kr="BLE 활용 완속 전기차 충전기 연동 기능 연구 개발"></div>
+          <div class="project-item-period">2024.09 – 2024.12</div>
+          <div class="project-item-desc i18n"
+            data-en="Designed BLE communication architecture between charger hardware and mobile app. Developed full BLE integration flow from scan to data transmission."
+            data-kr="BLE 기반 충전기–모바일 앱 간 통신 구조 설계 및 Android BLE 연동 기능 개발."></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key results" data-kr="핵심 성과"></span>
+            <span class="i18n"
+              data-en="Defined UUID-based protocol for charge control and status queries via GATT profile analysis · Implemented full BLE flow: scan → connect → service discovery → data transfer · Designed BLE session state management with timeout and exception handling · Built extensible protocol matching structure for dynamic and predefined UUIDs"
+              data-kr="GATT 프로파일 분석 후 충전 제어·상태 조회를 위한 UUID 기반 통신 프로토콜 정의 · BLE 스캔→연결→서비스 디스커버리→데이터 송수신 전체 흐름 구현 · 연결 상태 변화, 타임아웃, 예외 상황을 고려한 BLE 세션 상태 관리 로직 설계 · 동적/사전 정의 UUID 매칭 구조로 프로토콜 확장 가능 구조 구현"></span>
+          </div>
+          <div class="career-stack">
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">Android BLE</span>
+            <span class="skill-tag">GATT</span>
+            <span class="skill-tag">UUID Protocol Design</span>
+          </div>
+        </div>
+
+        <!-- Project 3: 마이그레이션 리딩 -->
+        <div class="project-item">
+          <div class="project-item-title i18n"
+            data-en="WebView/XML → Compose Migration — Project Lead"
+            data-kr="WebView/XML 앱 마이그레이션 프로젝트 리딩"></div>
+          <div class="project-item-period">2024.05 – 2025.02</div>
+          <div class="project-item-desc i18n"
+            data-en="Led a 3-person external developer team. Established architecture design and development guidelines for the migration from legacy WebView/XML to Jetpack Compose."
+            data-kr="외부 개발자 3인 팀 리딩, 아키텍처 설계 및 개발 가이드라인 수립."></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key results" data-kr="핵심 성과"></span>
+            <span class="i18n"
+              data-en="Refactoring strategy reduced code modification scope ~30% for new features · Common UI components and utility modularisation cut duplicate code ~40% · Layer separation and responsibility boundaries ensured code structure consistency · Established dev conventions and code review process to standardise team code quality"
+              data-kr="리팩터링 전략으로 신규 기능 개발 시 기존 코드 수정 범위 약 30% 감소 · 공통 UI 컴포넌트·유틸 모듈화로 중복 코드 약 40% 축소 · 레이어 분리 및 책임 범위 정의로 코드 구조 일관성 확보 · 개발 컨벤션 수립 및 코드 리뷰 운영으로 팀 코드 품질 표준화"></span>
+          </div>
+          <div class="career-stack">
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">MVVM</span>
+            <span class="skill-tag">Compose</span>
+            <span class="skill-tag">Coroutine</span>
+            <span class="skill-tag">Hilt</span>
+            <span class="skill-tag">Retrofit</span>
+            <span class="skill-tag">Clean Architecture</span>
+          </div>
+        </div>
+
+        <!-- Project 4: 북미 Native 앱 -->
+        <div class="project-item">
+          <div class="project-item-title i18n"
+            data-en="North America Native App — Architecture & Core Development"
+            data-kr="북미 타겟 Native 앱 설계 및 개발"></div>
+          <div class="project-item-period">2023.07 – 2023.12</div>
+          <div class="project-item-desc i18n"
+            data-en="Defined design system, architected the app, and developed core features for a North America-targeted native Android app."
+            data-kr="디자인 시스템 정의, 앱 아키텍처 설계 및 핵심 기능 개발."></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key results" data-kr="핵심 성과"></span>
+            <span class="i18n"
+              data-en="Design System and reusable UI structure improved screen development productivity · RESTful API integration and common network layer ensured data handling consistency · Google Maps with clustering improved location readability · Clean Architecture separated business logic for unit-testable structure · App install size reduced 46% (18.8MB → 10.1MB), 59% lighter than competitors · GitHub Flow branching strategy and spec documentation established team collaboration"
+              data-kr="Design System 및 재사용 가능 UI 구조로 화면 개발 생산성 향상 · RESTful API 연동 구조 및 공통 네트워크 처리 코드로 데이터 처리 일관성 확보 · Google Maps 기반 지도 및 클러스터링으로 위치 정보 가독성 개선 · Clean Architecture 적용으로 단위 테스트 가능 구조 구축 · 앱 설치 파일 크기 46% 감소 (18.8MB→10.1MB), 동종 앱 대비 59% 경량화 · GitHub Flow 기반 브랜치 전략 도입 및 명세 문서 공유로 협업 프로세스 정립"></span>
+          </div>
+          <div class="career-stack">
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">MVVM</span>
+            <span class="skill-tag">XML</span>
             <span class="skill-tag">Coroutines</span>
             <span class="skill-tag">Hilt</span>
             <span class="skill-tag">Retrofit</span>
-            <span class="skill-tag">BLE/NFC</span>
-            <span class="skill-tag">Firebase</span>
-            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">Google Maps API</span>
+            <span class="skill-tag">JUnit</span>
+            <span class="skill-tag">Clean Architecture</span>
+            <span class="skill-tag">Multi Module</span>
           </div>
         </div>
 
-        <div class="career-field">
+        <!-- Screenshots (회사 단위) -->
+        <div class="career-field" style="margin-top:16px;">
           <div class="career-field-label i18n" data-en="Screenshots" data-kr="스크린샷"></div>
           <div class="career-images">
             <div class="img-placeholder">Screenshot 1</div>
             <div class="img-placeholder">Screenshot 2</div>
-            <div class="img-placeholder">Screenshot 3</div>
           </div>
         </div>
       </div>
 
-      <!-- Freelance -->
+      <!-- ══════════════════════════════════════ -->
+      <!-- ══ Shinhan EZ Insurance ══ -->
+      <!-- ══════════════════════════════════════ -->
       <div class="career-card">
         <div class="career-card-header">
-          <h3 class="i18n" data-en="Insurance Advisory Platform" data-kr="보험 설계사 플랫폼"></h3>
-          <div class="role i18n" data-en="Freelance Web Developer" data-kr="프리랜서 웹 개발자"></div>
+          <h3 class="i18n" data-en="D&D Comms / Shinhan EZ Insurance — SFA System" data-kr="디앤디컴즈 / 신한EZ손해보험 — SFA 시스템 구축"></h3>
+          <div class="role i18n" data-en="Full Stack Web Developer (Freelance) · May 2022 – Apr 2023" data-kr="풀스택 웹 개발자 (프리랜서) · 2022.05 – 2023.04"></div>
           <div class="domain i18n"
-            data-en="InsurTech · Advisor-facing SaaS"
-            data-kr="인슈어테크 · 설계사용 SaaS"></div>
+            data-en="InsurTech · Advisor-facing SFA (Sales Force Automation)"
+            data-kr="인슈어테크 · 설계사용 SFA (영업지원시스템)"></div>
         </div>
 
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Project Description" data-kr="프로젝트 설명"></div>
-          <div class="career-field-content i18n"
-            data-en="Built advisor-facing insurance models for policy explanation and customer fit. Implemented server-side data retrieval and responsive UI."
-            data-kr="보험 설계사를 위한 상품 설명 및 고객 적합도 모델 구축. 서버 사이드 데이터 조회 및 반응형 UI 구현.">
+        <div class="project-item">
+          <div class="project-item-title i18n"
+            data-en="Shinhan EZ Insurance SFA System"
+            data-kr="신한EZ손해보험 SFA 시스템 구축"></div>
+          <div class="project-item-period">2022.05 – 2023.04</div>
+          <div class="project-item-desc i18n"
+            data-en="Built admin screens (permission management, interface history, Excel download, user management, HR sync) and user-facing screens (customer info, contract info, coverage analysis, SMS, document issuance including subscriptions, notices, FATCA)."
+            data-kr="관리자 화면 개발(권한 관리, 인터페이스 이력 조회, 엑셀 다운로드, 사용자 관리, 인사정보 동기화) 및 사용자 화면 개발(고객정보조회, 계약정보조회, 보장분석조회, 문자 발송, 발급물 — 청약서, 고지서, FATCA 등)."></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key results" data-kr="핵심 성과"></span>
+            <span class="i18n"
+              data-en="Optimised queries and caching improved load speed ~30% · Delivered handover documentation and tests"
+              data-kr="쿼리 최적화 및 캐싱으로 로딩 속도 ~30% 개선 · 인수인계 문서 및 테스트 코드 제공"></span>
           </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Key Challenges" data-kr="주요 이슈"></div>
-          <div class="career-field-content i18n"
-            data-en="— Content here"
-            data-kr="— 내용을 입력하세요">
-          </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Tech Stack" data-kr="사용 스택"></div>
           <div class="career-stack">
             <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">JQuery</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">w2ui</span>
+            <span class="skill-tag">Oracle</span>
+            <span class="skill-tag">MyBatis</span>
+            <span class="skill-tag">Thymeleaf</span>
           </div>
         </div>
 
-        <div class="career-field">
+        <div class="career-field" style="margin-top:16px;">
           <div class="career-field-label i18n" data-en="Screenshots" data-kr="스크린샷"></div>
           <div class="career-images">
             <div class="img-placeholder">Screenshot 1</div>
@@ -718,43 +408,64 @@
         </div>
       </div>
 
-      <!-- Goquba -->
+      <!-- ══════════════════════════════════════ -->
+      <!-- ══ Goquba Technology ══ -->
+      <!-- ══════════════════════════════════════ -->
       <div class="career-card">
         <div class="career-card-header">
-          <h3 class="i18n" data-en="Goquba Technology — AI Healthcare" data-kr="고쿠바 테크놀로지 — AI 헬스케어"></h3>
-          <div class="role i18n" data-en="AI Research Engineer (Intern)" data-kr="AI 리서치 엔지니어 (인턴)"></div>
+          <h3 class="i18n" data-en="Goquba Technology — AI Healthcare" data-kr="고큐바테크놀로지(주) — AI 헬스케어"></h3>
+          <div class="role i18n" data-en="AI Research Engineer (Intern) · Oct 2021 – Apr 2022" data-kr="AI 리서치 엔지니어 (인턴) · 2021.10 – 2022.04"></div>
           <div class="domain i18n"
-            data-en="Healthcare AI · Computer Vision · EMR automation"
-            data-kr="헬스케어 AI · 컴퓨터 비전 · EMR 자동화"></div>
+            data-en="Healthcare AI · Computer Vision · EMR Automation · Digital Therapeutics"
+            data-kr="헬스케어 AI · 컴퓨터 비전 · EMR 자동화 · 디지털 치료제"></div>
         </div>
 
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Project Description" data-kr="프로젝트 설명"></div>
-          <div class="career-field-content i18n"
-            data-en="Built CNN models for Beery-VMI assessment and automated EMR pipelines. Developed OpenCV-based pupil-tracking tooling."
-            data-kr="Beery-VMI 평가를 위한 CNN 모델 구축 및 EMR 파이프라인 자동화. OpenCV 기반 동공 추적 도구 개발.">
+        <!-- Project 1: AI 바우처 -->
+        <div class="project-item">
+          <div class="project-item-title i18n"
+            data-en="AI Voucher Proposals — 7 Written, 2 Selected"
+            data-kr="AI바우처 계획서 7건 작성 및 발표, 최종 2건 선정"></div>
+          <div class="project-item-period">2022.01 – 2022.04</div>
+          <div class="project-item-desc i18n"
+            data-en="Wrote and presented 7 AI voucher proposals for the healthcare division. 2 projects selected: (1) AI-based Beery-VMI assessment solution for developmental disabilities (collaboration with Bundang CHA Hospital Rehabilitation), (2) Sperm motility pattern analysis AI for male infertility diagnosis (collaboration with CHA Fertility Centre Seoul)."
+            data-kr="AI바우처 의료 분과 과제 계획서 7건 작성 및 발표, 최종 2건 선정: (1) 발달장애 시지각 평가도구(Beery-VMI) 인공지능 기반 분석 솔루션 (분당차병원 재활의학과 협업), (2) 정자운동패턴 분석을 통한 정자 염색체 이상 예측 AI솔루션으로 원인불명 남성 난임 진단 (차 여성의학연구소 서울역센터 협업)."></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key results" data-kr="핵심 성과"></span>
+            <span class="i18n"
+              data-en="2 out of 7 proposals selected for government-funded AI healthcare projects"
+              data-kr="정부 지원 AI 의료 분과 과제 7건 중 2건 최종 선정"></span>
           </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Key Challenges" data-kr="주요 이슈"></div>
-          <div class="career-field-content i18n"
-            data-en="— Content here"
-            data-kr="— 내용을 입력하세요">
-          </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Tech Stack" data-kr="사용 스택"></div>
           <div class="career-stack">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">OpenCV</span>
             <span class="skill-tag">CNN</span>
           </div>
         </div>
 
-        <div class="career-field">
+        <!-- Project 2: weKare 디지털치료제 -->
+        <div class="project-item">
+          <div class="project-item-title i18n"
+            data-en="weKare Digital Therapeutics — Feature Improvement"
+            data-kr="경도인지장애 디지털 치료제 'weKare' 기능 개선"></div>
+          <div class="project-item-period">2021.10 – 2021.12</div>
+          <div class="project-item-desc i18n"
+            data-en="Replaced facial recognition login from TensorFlow Lite model to AWS Rekognition, gaining additional features. Developed OpenCV pupil movement tracking prototype."
+            data-kr="안면인식 로그인 목적 TensorFlow Lite 활용 모델에서 AWS Rekognition 활용 모델로 교체, 다양한 피처 추가 획득. OpenCV 동공 움직임 인식 기능 프로토타입 개발."></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key results" data-kr="핵심 성과"></span>
+            <span class="i18n"
+              data-en="Migrated facial recognition from TFLite to AWS Rekognition · OpenCV pupil-tracking prototype · TCB Technology Rating T3 achieved"
+              data-kr="안면인식 TFLite→AWS Rekognition 마이그레이션 · OpenCV 동공 추적 프로토타입 개발 · TCB 기술평가 T3 등급 취득"></span>
+          </div>
+          <div class="career-stack">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">OpenCV</span>
+            <span class="skill-tag">AWS Rekognition</span>
+            <span class="skill-tag">TensorFlow Lite</span>
+          </div>
+        </div>
+
+        <div class="career-field" style="margin-top:16px;">
           <div class="career-field-label i18n" data-en="Screenshots" data-kr="스크린샷"></div>
           <div class="career-images">
             <div class="img-placeholder">Screenshot 1</div>
@@ -762,124 +473,139 @@
         </div>
       </div>
 
+      <!-- ═══════════════════════════════════════ -->
       <!-- ─ Personal Projects ─ -->
+      <!-- ═══════════════════════════════════════ -->
       <div class="career-section-label i18n" data-en="Personal Projects" data-kr="개인 프로젝트"></div>
 
       <div class="career-card">
         <div class="career-card-header">
-          <h3 class="i18n" data-en="EV Charger Finder App" data-kr="EV 충전소 검색 앱"></h3>
-          <div class="role i18n" data-en="Solo Developer" data-kr="1인 개발"></div>
-          <div class="domain i18n"
-            data-en="Full-stack mobile · EV infrastructure"
-            data-kr="풀스택 모바일 · EV 인프라"></div>
+          <h3 class="i18n" data-en="Community Communication Broadcast System" data-kr="지역 상권 커뮤니케이션 시스템"></h3>
+          <div class="role i18n" data-en="Database Design & Frontend Development" data-kr="DB 디자인 및 화면 개발"></div>
         </div>
 
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Project Description" data-kr="프로젝트 설명"></div>
-          <div class="career-field-content i18n"
-            data-en="Designing a full-stack EV-charging finder: Android client (Jetpack Compose) + Spring Boot backend. Offline caching, retry/backoff, BLE pairing prototypes."
-            data-kr="풀스택 EV 충전소 검색 플랫폼 설계: Android 클라이언트(Jetpack Compose) + Spring Boot 백엔드. 오프라인 캐싱, 재시도/백오프, BLE 페어링 프로토타입.">
-          </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Key Challenges" data-kr="주요 이슈"></div>
-          <div class="career-field-content i18n"
+        <div class="project-item">
+          <div class="project-item-desc i18n"
             data-en="— Content here"
-            data-kr="— 내용을 입력하세요">
+            data-kr="— 내용을 입력하세요"></div>
+          <div class="project-item-issue">
+            <span class="project-issue-label i18n" data-en="Key issues" data-kr="주요 이슈"></span>
+            <span class="i18n"
+              data-en="— Content here"
+              data-kr="— 내용을 입력하세요"></span>
           </div>
-        </div>
-
-        <div class="career-field">
-          <div class="career-field-label i18n" data-en="Tech Stack" data-kr="사용 스택"></div>
           <div class="career-stack">
-            <span class="skill-tag">Kotlin</span>
-            <span class="skill-tag">Jetpack Compose</span>
-            <span class="skill-tag">Spring Boot</span>
-            <span class="skill-tag">GitHub Actions</span>
-            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">MVC</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Spring</span>
+            <span class="skill-tag">MySql</span>
           </div>
         </div>
 
-        <div class="career-field">
+        <div class="career-field" style="margin-top:16px;">
           <div class="career-field-label i18n" data-en="Screenshots" data-kr="스크린샷"></div>
           <div class="career-images">
             <div class="img-placeholder">Screenshot 1</div>
           </div>
         </div>
+      </div>
+
+    </section>
+
+    <!-- ──── COVER LETTER TAB ──── -->
+    <section id="tab-coverletter" class="tab-content">
+      <div class="tab-meta">
+        <span class="updated i18n" data-en="Updated: 07.02.2026" data-kr="최종 수정: 2026/02/07"></span>
+      </div>
+
+      <div class="cover-letter-content i18n"
+        data-en="<p>Dear Hiring Manager,</p>
+<p>Write your cover letter here.</p>
+<p>Sincerely,<br>Hanseul Lee</p>"
+        data-kr="<p>안녕하세요,</p>
+<p>자기소개서 내용을 입력하세요.</p>
+<p>감사합니다.<br>이한슬 드림</p>">
       </div>
     </section>
 
     <!-- ──── PROFILE TAB ──── -->
     <section id="tab-profile" class="tab-content">
       <div class="tab-meta">
-        <span class="updated i18n" data-en="Updated: 2025-02-07" data-kr="최종 수정: 2025-02-07"></span>
+        <span class="updated i18n" data-en="Updated: 07.02.2026" data-kr="최종 수정: 2026/02/07"></span>
       </div>
 
       <div class="profile-section">
-        <div class="profile-section-title i18n" data-en="About Me" data-kr="소개"></div>
+        <div class="profile-section-title i18n" data-en="I'm an observer and challenger: never settle" data-kr="스스로를 관찰하며 끊임없이 도전하는 사람"></div>
+        <div class="profile-content i18n"
+          data-en="<p>-</p>"
+          data-kr="<p>저는 평소 다양한 생각을 하고, 이를 바탕으로 목표를 세운 뒤 곧바로 실행에 옮깁니다.<br/>분석하고 계획을 세우며 복잡한 것을 정리하는 과정을 좋아합니다. 저는 늘 도전해 왔고, 지금도 도전하고 있으며, 앞으로도 계속 도전하며 제 바운더리를 넓혀가고자 합니다.<br/>저에게 도전은 단순히 새로운 경험을 해보는 일이 아닙니다. 목적 달성이라는 구체적인 목표를 위해 다방면으로 조사하고 분석하며, 스스로에게 과제를 부여하고, 제가 어디까지 해낼 수 있는지 시험해보는 과정 자체가 도전이라고 생각합니다.<br/>또한 저는 제가 무엇을 하고 있는지 분명히 알고 있을 때, 다시 말해 생각을 실제 행동으로 옮기고 있을 때 가장 큰 만족을 느낍니다. 문제를 해결해 나가는 과정과 그 속에서 제가 선택한 방식들을 통해, 저는 스스로를 구체화 하고 재정의 합니다.</p>">
+        </div>
+      </div>
+
+      <!-- <div class="profile-section">
+        <div class="profile-section-title i18n" data-en="What does 'a problem' mean" data-kr="'문제'란 무엇인가"></div>
         <div class="profile-content i18n"
           data-en="<p>Write your introduction here.</p>"
-          data-kr="<p>소개를 입력하세요.</p>">
+          data-kr="<p>어느 분야든 설계해서 탐구하고 싶은 대상을 문제로 봅니다.<br/>문제는 대다수가 정리되지 않은 복잡함이란 특징을 가지고 있습니다. 이런 환경은 오히려 더 깊게 생각할 수 있는 기회가 됩니다. 결국 문제는 여러 측면에서 다양한 가설을 세우고 시도를 반복하며 파고들 수 있는 몰입의 시작점입니다.<br/>또한 문제는 나아가야 할 방향을 제시합니다. 그래서 결국 문제는 막막한 벽이나 해치워야하는 대상이 아닌 성장의 연료와 같다고 생각합니다. 해결 과정 속에서 넓고 깊은 시야와 사고를 가지고, 이를 통해 최종적으로 해결합니다. 저는 이렇게 문제를 통해 스스로를 확장하는 과정을 좋아합니다.</p>">
         </div>
+      </div> -->
+
+      <div class="profile-section">
+        <div class="profile-section-title i18n" data-en="Where I'll Be in 5 Years (2031, written in 2026)" data-kr="5년 후 2031년의 모습 (2026년 작성)"></div>
+          <ul class="profile-content i18n">
+            <li class="i18n"
+              data-en="Shaping the direction of projects and driving them toward with my team."
+              data-kr="팀 리더로서 프로젝트의 방향을 설정하고 팀원들과 함께 이끌고 있다."></li>
+            <li class="i18n"
+              data-en="Providing this page in three languages: Korean, English, and German."
+              data-kr="한국어, 영어, 독일어 세가지 버전으로 포트폴리오를 게시하고 있다."></li>
+            <li class="i18n"
+              data-en="Working on a personal project focused on supporting communities such as women in STEM, LGBTQ+ individuals, and children."
+              data-kr="STEM 분야의 여성, 퀴어, 아동 등을 지원하는 개인 프로젝트를 진행하고 있다."></li>
+          </ul>
       </div>
 
       <div class="profile-section">
-        <div class="profile-section-title i18n" data-en="Hobbies & Interests" data-kr="취미 및 관심사"></div>
-        <div class="profile-content i18n"
-          data-en="<p>Write your hobbies here.</p>"
-          data-kr="<p>취미를 입력하세요.</p>">
-        </div>
+        <div class="profile-section-title i18n" data-en="Where I'll Be in 10 Years (2036, written in 2026)" data-kr="10년 후 2036년의 모습 (2026년 작성)"></div>
+          <ul class="profile-content i18n">
+            <li class="i18n"
+              data-en="A role model for younger women developers, showing that they can work and grow without any barriers or discriminations."
+              data-kr="후배 여성 개발자들에게 어떤 제약과 차별 없이 마음껏 일할 수 있다는 예시 모델이다."></li>
+            <li class="i18n"
+              data-en="Having friends and connections I can meet across all six continents."
+              data-kr="6대주 어디에든 만날 수 있는 지인과 친구가 있다."></li>
+            <li class="i18n"
+              data-en="Publishing a curated collection from my diaries written since 2018."
+              data-kr="2018년부터 쓴 일기장 내용을 추려 출판했다."></li>
+          </ul>
       </div>
 
       <div class="profile-section">
-        <div class="profile-section-title i18n" data-en="Where I'll Be in 5 Years" data-kr="5년 후의 나"></div>
-        <div class="profile-content i18n"
-          data-en="<p>Write your 5-year vision here.</p>"
-          data-kr="<p>5년 후 목표를 입력하세요.</p>">
-        </div>
-      </div>
-
-      <div class="profile-section">
-        <div class="profile-section-title i18n" data-en="Where I'll Be in 10 Years" data-kr="10년 후의 나"></div>
-        <div class="profile-content i18n"
-          data-en="<p>Write your 10-year vision here.</p>"
-          data-kr="<p>10년 후 목표를 입력하세요.</p>">
-        </div>
-      </div>
-
-      <!-- References -->
-      <div class="profile-section">
-        <div class="profile-section-title i18n" data-en="References" data-kr="추천사"></div>
-
-        <div class="reference-card">
-          <div class="reference-quote i18n"
-            data-en=""Write a recommendation quote here.""
-            data-kr=""추천 문구를 입력하세요."">
-          </div>
-          <div class="reference-author">Name</div>
-          <div class="reference-role i18n" data-en="Title, Company" data-kr="직함, 회사"></div>
-        </div>
-
-        <div class="reference-card">
-          <div class="reference-quote i18n"
-            data-en=""Write a recommendation quote here.""
-            data-kr=""추천 문구를 입력하세요."">
-          </div>
-          <div class="reference-author">Name</div>
-          <div class="reference-role i18n" data-en="Title, Company" data-kr="직함, 회사"></div>
-        </div>
-
-        <p class="i18n" style="font-size:13px; color:var(--text-sub); margin-top:10px;"
-          data-en="Additional references available upon request."
-          data-kr="추가 레퍼런스는 요청 시 제공 가능합니다.">
-        </p>
+        <div class="profile-section-title i18n" data-en="How to enrich my personal life" data-kr="내 삶을 풍성하게 해주는 것들"></div>
+          <ul class="profile-content i18n">
+            <li class="i18n"
+              data-en="Spending time with my family and friends."
+              data-kr="가족, 친구와 함께하는 시간."></li>
+            <li class="i18n"
+              data-en="Going to the gym with my favorite music playlist."
+              data-kr="좋아하는 음악 들으며 운동하기."></li>
+            <li class="i18n"
+              data-en="Watching the film on the first snowy day of each year."
+              data-kr="매해 첫 눈이 온 날 보는 영화."></li>
+            <li class="i18n"
+              data-en="Listening to a song whose lyrics hold my wishes for the year on New Year's Day."
+              data-kr="새해 첫 날 한 해 소망을 담은 가사의 노래 듣기."></li>
+            <li class="i18n"
+              data-en="Reading my old diaries and getting lost in memories."
+              data-kr="일기장 읽으면서 추억에 잠기기."></li>
+          </ul>
       </div>
     </section>
   </main>
 
   <!-- ══════════ VISITOR COUNTER ══════════ -->
-  <!-- Add ?admin=true to URL to see visitor count -->
   <div class="visitor-badge" id="visitorBadge">
     👁 <span id="visitorCount">0</span>
   </div>
@@ -890,7 +616,11 @@
 
     function setLang(lang) {
       currentLang = lang;
-      document.body.classList.toggle('lang-kr', lang === 'kr');
+
+      // body 클래스: lang-en 또는 lang-kr (visibility utility용)
+      document.body.classList.remove('lang-en', 'lang-kr');
+      document.body.classList.add(`lang-${lang}`);
+
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-kr').classList.toggle('active', lang === 'kr');
 
@@ -917,14 +647,9 @@
     });
 
     /* ── Visitor Counter ── */
-    // Simple localStorage counter. For production, replace with an
-    // analytics service like GoatCounter (free, privacy-friendly):
-    // <script data-goatcounter="https://YOURSITE.goatcounter.com/count"
-    //         async src="//gc.zgo.at/count.js"></ script>
     (function() {
       const KEY = 'portfolio_visits';
       let count = parseInt(localStorage.getItem(KEY) || '0', 10);
-      // Count unique sessions (not every page load)
       if (!sessionStorage.getItem('counted')) {
         count++;
         localStorage.setItem(KEY, count);
@@ -932,7 +657,6 @@
       }
       document.getElementById('visitorCount').textContent = count;
 
-      // Show counter only with ?admin=true
       if (new URLSearchParams(window.location.search).get('admin') === 'true') {
         document.getElementById('visitorBadge').classList.add('show');
       }

@@ -1,0 +1,591 @@
+:root {
+      --bg: #f0f0ec;
+      --bg-card: #e8e8e3;
+      --text: #1a1a1a;
+      --text-sub: #5a5a5a;
+      --accent: #2a7d45;
+      --accent-light: #e6f2eb;
+      --border: #d4d4cf;
+      --font-kr: 'Pretendard', sans-serif;
+      --font-en: Arial, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-en);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.lang-kr {
+      font-family: var(--font-kr);
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-top {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 20px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .header-identity h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .header-identity p {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .contact-links a {
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .contact-links a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .contact-links .sep {
+      color: var(--border);
+      font-size: 11px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .lang-toggle button {
+      background: none;
+      border: none;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-sub);
+      font-family: var(--font-en);
+    }
+
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Tabs ── */
+    .tab-bar {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 0;
+      margin-top: 14px;
+    }
+
+    .tab-bar button {
+      background: none;
+      border: none;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-sub);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      font-family: inherit;
+    }
+
+    .tab-bar button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tab-bar button:hover:not(.active) {
+      color: var(--text);
+    }
+
+    /* ── Main ── */
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 24px 24px 80px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-meta {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .tab-meta .updated {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    /* ── CV Tab ── */
+    .cv-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 4px;
+      margin-bottom: 28px;
+    }
+
+    .cv-download:hover {
+      opacity: 0.9;
+    }
+
+    .cv-section {
+      margin-bottom: 32px;
+    }
+
+    .cv-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cv-item {
+      margin-bottom: 18px;
+    }
+
+    .cv-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .cv-item-header h3 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .cv-item-header .period {
+      font-size: 13px;
+      color: var(--text-sub);
+      flex-shrink: 0;
+    }
+
+    .cv-item-header .location {
+      font-size: 13px;
+      color: var(--text-sub);
+      width: 100%;
+    }
+
+    .cv-item ul {
+      margin-top: 6px;
+      padding-left: 18px;
+    }
+
+    .cv-item li {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 3px;
+    }
+
+    .cv-item-grade {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .skill-tag {
+      font-size: 12px;
+      padding: 2px 10px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    /* ── Career Detail Tab ── */
+    .career-section-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      margin-bottom: 16px;
+      margin-top: 36px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .career-section-label:first-child {
+      margin-top: 0;
+    }
+
+    .career-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .career-card-header {
+      margin-bottom: 16px;
+    }
+
+    .career-card-header h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .career-card-header .role {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .career-card-header .domain {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    .career-field {
+      margin-bottom: 14px;
+    }
+
+    .career-field-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .career-field-content {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .career-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .career-stack .skill-tag {
+      font-size: 12px;
+    }
+
+    .career-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .career-images .img-placeholder {
+      background: var(--bg);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    /* ── Profile Tab ── */
+    .profile-section {
+      margin-bottom: 32px;
+    }
+
+    .profile-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .profile-content {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .profile-content p {
+      margin-bottom: 10px;
+    }
+
+    /* ── References ── */
+    .reference-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    .reference-quote {
+      font-size: 14px;
+      color: var(--text);
+      font-style: italic;
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .reference-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .reference-role {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    /* ── Visitor Counter (admin only) ── */
+    .visitor-badge {
+      display: none; /* Toggle to flex to show */
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      z-index: 200;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .visitor-badge.show {
+      display: flex;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .header-top {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .header-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .cv-item-header {
+        flex-direction: column;
+      }
+      .career-images {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /*
+     * ── Language Visibility Utility ──
+     * 특정 언어에서만 보이거나 숨기고 싶은 요소에 클래스 추가:
+     *   lang-en-only  → 영어일 때만 보임, 한국어면 숨김
+     *   lang-kr-only  → 한국어일 때만 보임, 영어면 숨김
+     */
+    .lang-en-only,
+    .lang-kr-only { /* default: visible */ }
+
+    body.lang-kr .lang-en-only { display: none !important; }
+    body.lang-en .lang-kr-only { display: none !important; }
+    /* body에 항상 lang-en 또는 lang-kr 클래스가 붙음 */
+
+    /* ── Skills Table ── */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .skills-table th {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+      vertical-align: top;
+      width: 130px;
+    }
+
+    .skills-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .skills-table tr:last-child th,
+    .skills-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .skills-table .skill-tags {
+      gap: 5px;
+    }
+
+    /* ── Cover Letter ── */
+    .cover-letter-content {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text);
+      max-width: 680px;
+    }
+
+    .cover-letter-content p {
+      margin-bottom: 16px;
+    }
+
+    .cover-letter-meta {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-bottom: 24px;
+    }
+
+    /* ── Profile Lists ── */
+    ul.profile-content {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.profile-content li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    ul.profile-content li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── Project Mini-Cards (inside career-card) ── */
+.project-item {
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  margin: 12px 0;
+  background: var(--bg);
+  border-radius: 0 4px 4px 0;
+}
+
+.project-item-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.project-item-desc {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.project-item-issue {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.project-issue-label {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-right: 6px;
+}
+
+.project-item .career-stack {
+  margin-top: 6px;
+}
+
+.project-item-period {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-bottom: 6px;
+}
