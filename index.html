@@ -661,6 +661,10 @@
     👁 <span id="visitorCount">0</span>
   </div>
 
+  <div class="img-overlay" id="imgOverlay" onclick="closeOverlay()">
+    <img id="overlayImg" src="" alt="">
+  </div>
+
   <script>
     /* ── Language ── */
     let currentLang = 'en';
@@ -731,9 +735,5 @@
       if (e.key === 'Escape') closeOverlay();
     });
   </script>
-
-  <div class="img-overlay" id="imgOverlay" onclick="closeOverlay()">
-    <img id="overlayImg" src="" alt="">
-  </div>
 </body>
 </html>
